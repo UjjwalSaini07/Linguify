@@ -1,7 +1,7 @@
 import { Manrope } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import ThemeTogglebutton from "@/components/ui/ThemeToggle";
-import { Toaster } from "@/components/ui/sonner";
+import ThemeTogglebutton from "../components/ui/ThemeToggle";
+import { Toaster } from "../components/ui/sonner";
 import CodeLogo from "../assests/CodeLogo";
 import "./globals.css";
 
