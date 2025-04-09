@@ -1,18 +1,17 @@
-import Image from "next/image";
+import Hero from "../components/HeroSection";
+import { Spotlight } from "../components/ui/Spotlight";
+import React from "react";
 
-export default function Home() {
+const page = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-      </main>
-    </div>
+    <>
+      <Spotlight
+        className="-top-40 left-10 md:left-80 md:-top-20"
+        fill="#c9c9c9"
+      />
+      <Hero />
+    </>
   );
-}
+};
+
+export default page;
