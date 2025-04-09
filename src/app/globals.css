@@ -114,9 +114,23 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border scroll-smooth;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gradient-to-b caret-primary from-background text-foreground;
   }
+
+  ::selection {
+    @apply bg-primary text-black;
+  }
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+}
+
+.transm {
+  @apply transition-all duration-300;
 }
