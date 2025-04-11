@@ -1,28 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
-
-const LANGUAGES = {
-  python: "3.10.0",
-  javascript: "18.15.0",
-  java: "15.0.2",
-  cpp: "10.2.0",
-  typescript: "5.0.3",
-};
+import { LANGUAGES, getFileExtension } from "./languages";
 
 const API = axios.create({
   baseURL: "https://emkc.org/api/v2/piston",
 });
-
-function getFileExtension(language) {
-  const extensions = {
-    python: "py",
-    javascript: "js",
-    java: "java",
-    cpp: "cpp",
-    typescript: "ts",
-  };
-  return extensions[language] || "txt";
-}
 
 async function executeCode(language, sourceCode) {
   try {
@@ -102,3 +84,68 @@ export default function Output({ language, sourceCode, setOutput }) {
     </div>
   );
 }
+
+
+// Todo: For Checking Runtime Logs of API
+// import axios from 'axios';
+
+// const EXTENSION_MAP = {
+//   python: 'py',
+//   javascript: 'js',
+//   java: 'java',
+//   cpp: 'cpp',
+//   typescript: 'ts',
+//   ada: 'adb',
+//   assembly: 'asm',
+//   c: 'c',
+//   csharp: 'cs',
+//   clojure: 'clj',
+//   cobol: 'cob',
+//   coffeescript: 'coffee',
+//   delphi: 'pas',
+//   erlang: 'erl',
+//   fsharp: 'fs',
+//   fortran: 'f90',
+//   go: 'go',
+//   groovy: 'groovy',
+//   haskell: 'hs',
+//   julia: 'jl',
+//   kotlin: 'kt',
+//   lisp: 'lisp',
+//   lua: 'lua',
+//   matlab: 'm',
+//   'objective-c': 'm',
+//   pascal: 'pas',
+//   perl: 'pl',
+//   php: 'php',
+//   powershell: 'ps1',
+//   r: 'r',
+//   ruby: 'rb',
+//   rust: 'rs',
+//   scala: 'scala',
+//   swift: 'swift',
+//   tcl: 'tcl',
+//   vbnet: 'vb',
+// };
+
+// async function fetchLanguagesFromPiston() {
+//   try {
+//     const response = await axios.get('https://emkc.org/api/v2/piston/runtimes');
+//     const runtimes = response.data;
+
+//     const LANGUAGES = {};
+//     const extensions = {};
+
+//     runtimes.forEach(runtime => {
+//       LANGUAGES[runtime.language] = runtime.version;
+//       extensions[runtime.language] = EXTENSION_MAP[runtime.language] || '';
+//     });
+
+//     console.log('LANGUAGES:', LANGUAGES);
+//     console.log('extensions:', extensions);
+//   } catch (err) {
+//     console.error('Error fetching languages from Piston API:', err.message);
+//   }
+// }
+
+// fetchLanguagesFromPiston();
