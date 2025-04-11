@@ -15,6 +15,7 @@ import { ArrowRightIcon, Code2Icon, Copy, Loader } from "lucide-react";
 import { DM_Mono } from "next/font/google";
 import ShineBorder from "./magicui/shine-border";
 import { useTheme } from "next-themes";
+import Output from "./CodeOutput";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
@@ -31,6 +32,7 @@ const CodeConvertor = () => {
   });
 
   const theme = useTheme();
+  const [result, setResult] = useState({ output: "", isError: false });
   const [sourceCode, setSourceCode] = useState("// Write your code here");
   const [translatedCode, setTranslatedCode] = useState("");
   const [sourceLanguage, setSourceLanguage] = useState("javascript");
@@ -229,6 +231,23 @@ const CodeConvertor = () => {
           <h1 className="text-2xl md:text-4xl font-semibold text-white mb-4">
             Output:
           </h1>
+          <Output
+            language={sourceLanguage}
+            sourceCode={sourceCode}
+            setOutput={setResult}
+          />
+          <div
+            style={{
+              padding: "16px",
+              border: `1px solid ${result.isError ? "red" : "green"}`,
+              color: result.isError ? "red" : "white",
+              whiteSpace: "pre-wrap",
+              wordWrap: "break-word",
+            }}
+          >
+            <strong>Output:</strong>
+            <pre>{result.output || "Run code to see the output here."}</pre>
+          </div>
       </div>
     </div>
   );
