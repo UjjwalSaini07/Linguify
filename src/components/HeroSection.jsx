@@ -18,15 +18,26 @@ const HeroSection = () => {
   }, [theme]);
 
   return (
-    <div className="relative flex min-h-svh w-full flex-col items-center pt-20 md:pt-28 overflow-hidden rounded-lg border border-t-0 bg-background md:shadow-xl">
-      <h1 className="pointer-events-none text-3xl whitespace-pre-wrap bg-gradient-to-b from-black to-zinc-400/80 bg-clip-text text-center md:text-6xl md:max-w-xl lg:max-w-3xl font-semibold lg:text-7xl leading-none text-transparent dark:from-white dark:to-zinc-600/80 tracking-tight">
-        Transform{" "}
+    <div className="relative flex min-h-svh w-full flex-col items-center pt-20 md:pt-28 overflow-hidden rounded-lg bg-background md:shadow-xl">
+      <h1 className="pointer-events-none text-3xl -mt-18 whitespace-pre-wrap bg-gradient-to-b from-black to-zinc-400/80 bg-clip-text text-center md:text-6xl md:max-w-xl lg:max-w-3xl font-semibold lg:text-7xl leading-none text-transparent dark:from-white dark:to-zinc-600/80 tracking-tight">
+        Revolutionize {" "}
         <span
-          className={cn(font.className, "md:text-7xl text-4xl text-primary/80")}
+          className={cn(font.className, "md:text-7xl text-4xl text-[#08fd5d]")}
         >
           {"{"}Code{"}"}
         </span>{" "}
-        Effortlessly with AI
+        Creation with the
+        <span
+          className={"text-[#08fd5d]"}
+        >
+          {""} Power 
+        </span>
+        {""} of
+        <span
+          className={"text-[#08fd5d]"}
+        >
+          {""} AI
+        </span>
       </h1>
       <p className="md:text-xl pt-5 font-light px-4 text-pretty text-center text-muted-foreground max-w-prose">
         with Linguify, just paste your code and convert them in a go!
@@ -55,7 +66,7 @@ const HeroSection = () => {
       <footer className="absolute bottom-2 right-10 border py-2 px-3 bg-green-100/60 dark:bg-green-950/60 border-emerald-700 rounded-md text-green-900 dark:text-green-200 z-[51]">
         made by{" "}
         <a
-          href="http://bento.me/anish7"
+          href="https://github.com/UjjwalSaini07"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-green-500 hover:underline"

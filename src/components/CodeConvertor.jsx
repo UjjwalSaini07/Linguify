@@ -214,20 +214,22 @@ const CodeConvertor = () => {
         </div>
       </div>
       {object?.explanation && (
-        <div className="mt-4 p-2 md:p-10 mx-auto border-2 border-dashed rounded-lg border-s-primary">
-          <h1 className="text-2xl py-2 md:text-4xl font-semibold">
-            Explanation:{" "}
+        <div className="mt-6 p-4 md:p-10 mx-auto border-2 border-dashed rounded-2xl border-s-primary shadow-lg max-w-7xl backdrop-blur-sm bg-transparent">
+          <h1 className="text-2xl md:text-4xl font-semibold text-white mb-4">
+            Explanation:
           </h1>
           <div
-            className={
-              font.className +
-              " text-lg whitespace-pre leading-[1.4rem] text-pretty"
-            }
+            className={`${font.className} text-lg leading-relaxed text-gray-400 break-words`}
           >
             <Markdown>{object.explanation || "Nothing...."}</Markdown>
           </div>
         </div>
       )}
+      <div className="mt-6 p-4 md:p-10 mx-auto border-2 border-dashed rounded-2xl border-s-primary shadow-lg max-w-7xl backdrop-blur-sm bg-transparent">
+          <h1 className="text-2xl md:text-4xl font-semibold text-white mb-4">
+            Output:
+          </h1>
+      </div>
     </div>
   );
 };
