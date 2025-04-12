@@ -24,7 +24,7 @@ const font = DM_Mono({ subsets: ["latin"], weight: ["400"] });
 
 const CodeConvertor = () => {
   const { object, submit, isLoading, error } = useObject({
-    api: "/api/codegen",
+    api: "/api/genaiCode",
     schema: {
       code: "",
       explanation: "",

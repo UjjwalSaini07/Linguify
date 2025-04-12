@@ -79,7 +79,7 @@ const HeroSection = () => {
             aria-hidden="true"
             className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-800 via-pink-800 to-red-800 opacity-0 transition-opacity duration-300 hover:opacity-20"
           ></span>
-          <span className="relative z-20 font-bold">GitHub</span>
+          <span className="relative z-20 font-bold">Visit GitHub</span>
         </a>
       </Button>
       {theme === "dark" && !isMobile && (
