@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Oxygen_Mono } from "next/font/google";
 import Spline from "@splinetool/react-spline";
-import { cn } from "../lib/utils";
+import { cn } from "../../lib/utils";
 import Convertor from "./CodeConvertor";
-import { Button } from "./ui/button";
-import BgComponent from "../assets/CubeBg.png";
+import { Button } from "../ui/button";
 
 const spline_model = { 
   position: "fixed",

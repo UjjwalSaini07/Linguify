@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CodeEditor from "./CodeEditor";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import Markdown from "react-markdown";
 import { toast } from "sonner";
 import { experimental_useObject as useObject } from "ai/react";
@@ -10,10 +10,10 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
+} from "../ui/select";
 import { ArrowRightIcon, Code2Icon, Copy, Loader } from "lucide-react";
 import { DM_Mono } from "next/font/google";
-import ShineBorder from "./magicui/shine-border";
+import ShineBorder from "../magicui/shine-border";
 import { useTheme } from "next-themes";
 import Output from "./CodeOutput";
 

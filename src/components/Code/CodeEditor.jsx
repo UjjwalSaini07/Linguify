@@ -1,6 +1,6 @@
 import { Editor } from "@monaco-editor/react";
 import { useTheme } from "next-themes";
-import { Skeleton } from "./ui/skeleton";
+import { Skeleton } from "../ui/skeleton";
 import { Code2 } from "lucide-react";
 import React from "react";
 
