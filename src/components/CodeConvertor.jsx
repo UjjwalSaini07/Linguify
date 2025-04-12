@@ -217,7 +217,7 @@ const CodeConvertor = () => {
       </div>
       {object?.explanation && (
         <div className="mt-6 p-4 md:p-10 mx-auto border-2 border-dashed rounded-2xl border-s-primary shadow-lg max-w-7xl backdrop-blur-sm bg-transparent">
-          <h1 className="text-2xl md:text-4xl font-semibold text-white mb-4">
+          <h1 className="text-2xl md:text-4xl font-semibold text-primary mb-4">
             Explanation:
           </h1>
           <div
@@ -228,7 +228,7 @@ const CodeConvertor = () => {
         </div>
       )}
       <div className="mt-6 p-4 md:p-10 mx-auto border-2 border-dashed rounded-2xl border-s-primary shadow-lg max-w-7xl backdrop-blur-sm bg-transparent">
-          <h1 className="text-2xl md:text-4xl font-semibold text-white mb-4">
+          <h1 className="text-2xl md:text-4xl font-semibold text-primary mb-4">
             Output:
           </h1>
           <Output
@@ -237,16 +237,16 @@ const CodeConvertor = () => {
             setOutput={setResult}
           />
           <div
-            style={{
-              padding: "16px",
-              border: `1px solid ${result.isError ? "red" : "green"}`,
-              color: result.isError ? "red" : "white",
-              whiteSpace: "pre-wrap",
-              wordWrap: "break-word",
-            }}
+            className={`p-4 md:p-6 justify-left text-left border-2 rounded-2xl ${
+              result.isError ? 'border-red-500 text-red-500' : 'theme.theme === "light" ? "text-black" : "text-white border-green-500'
+            } shadow-lg max-w-7xl backdrop-blur-sm bg-transparent text-left`}
           >
-            <strong>Output:</strong>
-            <pre>{result.output || "Run code to see the output here."}</pre>
+            <h1 className="text-xl md:text-2xl font-semibold mb-4">
+              Output:
+            </h1>
+            <div className='text-base leading-relaxed break-words whitespace-pre-wrap'>
+              {result.output || "Run code to see the output."}
+            </div>
           </div>
       </div>
     </div>
