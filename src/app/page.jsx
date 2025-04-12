@@ -1,4 +1,4 @@
-import Hero from "../components/HeroSection";
+import Hero from "../components/Code/HeroSection";
 import { Spotlight } from "../components/ui/Spotlight";
 import React from "react";
 

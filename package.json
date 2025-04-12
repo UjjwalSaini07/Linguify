@@ -12,6 +12,7 @@
     "@monaco-editor/react": "^4.7.0",
     "@radix-ui/react-select": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.0",
+    "@splinetool/react-spline": "^4.0.0",
     "ai": "^4.3.4",
     "axios": "^1.8.4",
     "class-variance-authority": "^0.7.1",

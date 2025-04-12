@@ -2,7 +2,7 @@ import { Manrope } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import ThemeTogglebutton from "../components/ui/ThemeToggle";
 import { Toaster } from "../components/ui/sonner";
-import CodeLogo from "../assests/CodeLogo";
+import CodeLogo from "../assets/CodeLogo";
 import "./globals.css";
 
 const font = Manrope({ subsets: ["latin"] });

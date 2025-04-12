@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { ArrowRightIcon, Loader } from "lucide-react";
 import { LANGUAGES, getFileExtension } from "./languages";
 
 const API = axios.create({
@@ -69,17 +70,22 @@ export default function Output({ language, sourceCode, setOutput }) {
       <button
         onClick={runCode}
         disabled={isLoading}
-        style={{
-          padding: "8px 16px",
-          margin: "16px 0",
-          borderRadius: "4px",
-          border: "1px solid #333",
-          background: isLoading ? "#ccc" : "#333",
-          color: isLoading ? "#666" : "#fff",
-          cursor: isLoading ? "not-allowed" : "pointer",
-        }}
+        className={`relative flex items-center justify-center px-6 py-2 mb-4 rounded-md border text-white text-lg font-semibold 
+          ${isLoading ? "bg-gray-600 border-gray-600 cursor-not-allowed" : "bg-gradient-to-r from-black via-zinc-900 to-zinc-950 border-zinc-700"} 
+          group overflow-hidden transition-all duration-300`}
       >
-        {isLoading ? "Running..." : "Run Code"}
+        {isLoading ? (
+          <>
+            Running...
+            <Loader className="animate-spin ml-2 w-4 h-4 text-white" />
+          </>
+        ) : (
+          <>
+            Run Code
+            <ArrowRightIcon className="ml-2 w-5 h-5" />
+          </>
+        )}
+        <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-500"></span>
       </button>
     </div>
   );
