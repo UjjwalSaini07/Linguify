@@ -55,7 +55,7 @@ const HeroSection = () => {
       <p className="md:text-xl pt-5 font-light px-4 z-20 text-pretty text-center text-muted-foreground max-w-prose">
         with Linguify, effortlessly paste your code and watch it transform in seconds!
       </p>
-      <Button
+      {/* <Button
         asChild
         className="relative z-20 mt-4 px-6 py-2 bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white font-semibold text-sm shadow-lg rounded-full overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-2xl active:scale-95"
         variant={"secondary"}
@@ -80,7 +80,7 @@ const HeroSection = () => {
           ></span>
           <span className="relative z-20 font-bold">Visit GitHub</span>
         </a>
-      </Button>
+      </Button> */}
       {theme === "dark" && !isMobile && (
         <Spline 
           style={spline_model} 
