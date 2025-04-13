@@ -6,7 +6,6 @@ import { Oxygen_Mono } from "next/font/google";
 import Spline from "@splinetool/react-spline";
 import { cn } from "../../lib/utils";
 import Convertor from "./CodeConvertor";
-import { Button } from "../ui/button";
 
 const spline_model = { 
   position: "fixed",
@@ -55,32 +54,6 @@ const HeroSection = () => {
       <p className="md:text-xl pt-5 font-light px-4 z-20 text-pretty text-center text-muted-foreground max-w-prose">
         with Linguify, effortlessly paste your code and watch it transform in seconds!
       </p>
-      {/* <Button
-        asChild
-        className="relative z-20 mt-4 px-6 py-2 bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white font-semibold text-sm shadow-lg rounded-full overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-2xl active:scale-95"
-        variant={"secondary"}
-      >
-        <a
-          rel="noopener"
-          href="https://github.com/UjjwalSaini07/Linguify"
-          target="_blank"
-          className="relative flex items-center justify-center"
-        >
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-700 via-pink-700 to-red-700 opacity-30 animate-pulse motion-reduce:animate-none"
-          ></span>
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 rounded-full border-2 border-transparent bg-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 animate-spin-slow opacity-50 transition-opacity hover:opacity-70"
-          ></span>
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-800 via-pink-800 to-red-800 opacity-0 transition-opacity duration-300 hover:opacity-20"
-          ></span>
-          <span className="relative z-20 font-bold">Visit GitHub</span>
-        </a>
-      </Button> */}
       {theme === "dark" && !isMobile && (
         <Spline 
           style={spline_model} 

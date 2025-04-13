@@ -38,7 +38,7 @@ const CodeConvertor = () => {
 
   const theme = useTheme();
   const [result, setResult] = useState({ output: "", isError: false });
-  const [sourceCode, setSourceCode] = useState("// Write your code here");
+  const [sourceCode, setSourceCode] = useState("// Start writing your code here.");
   const [translatedCode, setTranslatedCode] = useState("");
   const [sourceLanguage, setSourceLanguage] = useState("javascript");
   const [translatedLanguage, setTranslatedLanguage] = useState("python");
