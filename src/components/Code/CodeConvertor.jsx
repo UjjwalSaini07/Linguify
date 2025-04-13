@@ -16,6 +16,7 @@ import {
 import { ArrowRightIcon, Code2Icon, Copy, Loader } from "lucide-react";
 import { DM_Mono } from "next/font/google";
 import ShineBorder from "../magicui/shine-border";
+import { BorderBeam } from "../magicui/border-beam";
 import { useTheme } from "next-themes";
 import Output from "./CodeOutput";
 import useCodeAnalyzer from "./useCodeAnalyzer";
@@ -47,6 +48,7 @@ const CodeConvertor = () => {
 
   const AnalyzerhandleSubmit = () => {
     Analyzersubmit({ sourceCode });
+    toast.success("Scroll Down to Check the Code Analysis")
   };
 
   if (error) {
@@ -129,6 +131,17 @@ const CodeConvertor = () => {
                 onChange={(value) => setSourceCode(value)}
               />
             </div>
+            <BorderBeam
+              duration={10}
+              size={500}
+              className="from-transparent via-green-600 to-transparent"
+            />
+            <BorderBeam
+              duration={10}
+              delay={3}
+              size={500}
+              className="from-transparent via-blue-600 to-transparent"
+            />
           </ShineBorder>
         </div>
         <button
@@ -261,6 +274,17 @@ const CodeConvertor = () => {
                 value={object?.code || ""}
                 onChange={(value) => setTranslatedCode(value)}
               />
+              <BorderBeam
+              duration={10}
+              size={500}
+              className="from-transparent via-green-600 to-transparent"
+            />
+            <BorderBeam
+              duration={10}
+              delay={3}
+              size={500}
+              className="from-transparent via-blue-600 to-transparent"
+            />
             </div>
           </ShineBorder>
         </div>
