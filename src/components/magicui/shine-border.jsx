@@ -1,7 +1,6 @@
 "use client";
 
-import { cn } from "../../lib/utils";
-import PropTypes from "prop-types";
+import { cn } from "@/lib/utils";
 
 /**
  * @name Shine Border
@@ -28,7 +27,7 @@ export default function ShineBorder({
       }}
       className={cn(
         "relative grid min-h-[60px] w-fit min-w-[300px] place-items-center rounded-[--border-radius] bg-white text-black dark:bg-black dark:text-white",
-        className
+        className,
       )}
     >
       <div
@@ -47,12 +46,3 @@ export default function ShineBorder({
     </div>
   );
 }
-
-ShineBorder.propTypes = {
-  borderRadius: PropTypes.number,
-  borderWidth: PropTypes.number,
-  duration: PropTypes.number,
-  color: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired,
-};
