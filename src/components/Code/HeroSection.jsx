@@ -6,8 +6,9 @@ import { Oxygen_Mono } from "next/font/google";
 import Spline from "@splinetool/react-spline";
 import { cn } from "../../lib/utils";
 import Convertor from "./CodeConvertor";
+// import { HyperText } from "../magicui/hyper-text";
 
-const spline_model = { 
+const spline_model = {
   position: "fixed",
   top: "0",
   left: "0",
@@ -36,11 +37,10 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div 
-      className="relative flex min-h-screen w-full flex-col items-center pt-20 md:pt-28 z-20 overflow-hidden rounded-lg bg-background"
-    >
+    <div className="relative flex min-h-screen w-full flex-col items-center pt-20 md:pt-28 z-20 overflow-hidden rounded-lg bg-background">
       <h1 className="pointer-events-none text-4xl -mt-18 z-20 whitespace-pre-wrap bg-gradient-to-b from-black to-zinc-400/80 bg-clip-text text-center md:text-6xl md:max-w-xl lg:max-w-3xl font-semibold lg:text-7xl leading-none text-transparent dark:from-white dark:to-zinc-600/80 tracking-tight">
         Revolutionize{" "}
+        {/* <HyperText className="text-7xl font-bold" duration={1000} animateOnHover={true}>Revolutionize</HyperText> */}
         <span
           className={cn(font.className, "md:text-7xl text-3xl text-[#08fd5d]")}
         >
@@ -48,15 +48,16 @@ const HeroSection = () => {
         </span>{" "}
         Creation with the
         <span className={"text-[#08fd5d]"}>{""} Power </span>
-          {""}of
+        {""}of
         <span className={"text-[#08fd5d]"}>{""} AI</span>
       </h1>
       <p className="md:text-xl pt-5 font-light px-4 z-20 text-pretty text-center text-muted-foreground max-w-prose">
-        with Linguify, effortlessly paste your code and watch it transform in seconds!
+        with Linguify, effortlessly paste your code and watch it transform in
+        seconds!
       </p>
       {theme === "dark" && !isMobile && (
-        <Spline 
-          style={spline_model} 
+        <Spline
+          style={spline_model}
           scene="https://prod.spline.design/WDf01kZfl0tgDLbA/scene.splinecode"
         />
       )}
