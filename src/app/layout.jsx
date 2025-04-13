@@ -11,7 +11,7 @@ export const metadata = {
   title: "Linguify - Code Without Borders",
   description:
     "Effortlessly transform your code into over 35 programming languages with the power of AI. Streamline development and expand compatibility—all in just a single step!",
-  metadataBase: new URL("https://http://localhost:3000/"),
+  metadataBase: new URL("http://localhost:3000/"),
 };
 
 export default function RootLayout({ children }) {
@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
             <div className="flex items-center gap-2 cursor-pointer">
               <CodeLogo className="w-6.5 h-6.5 text-primary hover:text-secondary transition-colors duration-300" />
               <h1 className="text-xl font-bold md:text-2xl tracking-tight text-primary hover:scale-105 transition-transform duration-300">
-                Linguify<span className="text-[#08fd5d]">.</span>
+                Linguify<span className="text-[#08fd5d]">...</span>
               </h1>
             </div>
             <div className="flex items-center gap-4">

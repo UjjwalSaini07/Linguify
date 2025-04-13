@@ -1,6 +1,5 @@
-"use client";;
-import { cn } from "../../lib/utils";
-import { AnimatePresence, motion } from "motion/react";
+"use client";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const DEFAULT_CHARACTER_SET = Object.freeze("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""));
@@ -22,8 +21,7 @@ export function HyperText({
     forwardMotionProps: true,
   });
 
-  const [displayText, setDisplayText] = useState(() =>
-    children.split(""));
+  const [displayText, setDisplayText] = useState(() => children.split(""));
   const [isAnimating, setIsAnimating] = useState(false);
   const iterationCount = useRef(0);
   const elementRef = useRef(null);
@@ -35,7 +33,6 @@ export function HyperText({
     }
   };
 
-  // Handle animation start based on view or delay
   useEffect(() => {
     if (!startOnView) {
       const startTimeout = setTimeout(() => {
@@ -89,15 +86,17 @@ export function HyperText({
   return (
     <MotionComponent
       ref={elementRef}
-      className={cn("overflow-hidden py-2 text-4xl font-bold", className)}
+      className={className}
       onMouseEnter={handleAnimationTrigger}
       {...props}>
       <AnimatePresence>
-        {displayText.map((letter, index) => (
-          <motion.span key={index} className={cn("font-mono", letter === " " ? "w-3" : "")}>
-            {letter.toUpperCase()}
-          </motion.span>
-        ))}
+        <motion.span style={{ display: "inline-block" }}>
+          {displayText.map((letter, index) => (
+            <motion.span key={index} style={{ display: "inline-block" }}>
+              {letter}
+            </motion.span>
+          ))}
+        </motion.span>
       </AnimatePresence>
     </MotionComponent>
   );

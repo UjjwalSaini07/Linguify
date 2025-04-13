@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import CodeEditor from "./CodeEditor";
 import { Button } from "../ui/button";
 import Markdown from "react-markdown";
@@ -14,8 +16,12 @@ import {
 import { ArrowRightIcon, Code2Icon, Copy, Loader } from "lucide-react";
 import { DM_Mono } from "next/font/google";
 import ShineBorder from "../magicui/shine-border";
+import { BorderBeam } from "../magicui/border-beam";
 import { useTheme } from "next-themes";
 import Output from "./CodeOutput";
+import useCodeAnalyzer from "./useCodeAnalyzer";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
@@ -30,15 +36,22 @@ const CodeConvertor = () => {
       explanation: "",
     },
   });
+  const { Analyzerdata, Analyzersubmit, AnalyzerisLoading, Analyzererror } =
+    useCodeAnalyzer("/api/genaiCodeAnalyser");
 
   const theme = useTheme();
   const [result, setResult] = useState({ output: "", isError: false });
-  const [sourceCode, setSourceCode] = useState("// Write your code here");
+  const [sourceCode, setSourceCode] = useState("// Start writing your code here.");
   const [translatedCode, setTranslatedCode] = useState("");
   const [sourceLanguage, setSourceLanguage] = useState("javascript");
   const [translatedLanguage, setTranslatedLanguage] = useState("python");
 
   const prompted = `convert this code from ${sourceLanguage} to ${translatedLanguage} : \n ${sourceCode}`;
+
+  const AnalyzerhandleSubmit = () => {
+    Analyzersubmit({ sourceCode });
+    toast.success("Scroll Down to Check the Code Analysis")
+  };
 
   if (error) {
     toast.error("Failed to generate code");
@@ -49,13 +62,23 @@ const CodeConvertor = () => {
     toast.success("Copied to clipboard");
   }
 
+  useEffect(() => {
+    AOS.init({
+      offset: 100,
+      delay: 50,
+      duration: 2000,
+      easing: "ease",
+      once: true,
+    });
+  }, []);
+
   return (
     <div
       className="max-w-screen px-2 min-h-screen w-full md:px-20 my-16"
       id="coder"
     >
       <div className="grid gap-20 grid-cols-1 sm:grid-cols-2 relative">
-        <div className="flex flex-col">
+        <div data-aos="fade-right" className="flex flex-col">
           <div className="flex">
             <Select onValueChange={setSourceLanguage} defaultValue="javascript">
               <SelectTrigger className="rounded-e-none border-e-0">
@@ -120,18 +143,33 @@ const CodeConvertor = () => {
                 onChange={(value) => setSourceCode(value)}
               />
             </div>
+            <BorderBeam
+              duration={10}
+              size={500}
+              className="from-transparent via-[#08fd5d] to-transparent"
+            />
           </ShineBorder>
         </div>
         <button
+          data-aos="flip-left"
           type="button"
           title="convert"
           onClick={() => {
             submit(prompted);
           }}
           disabled={isLoading}
-          className="overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-36 p-2 h-12 bg-gradient-to-br from-black via-zinc-900 to-zinc-950 border text-white rounded-md text-xl font-semibold cursor-pointer z-10 group disabled:opacity-65 flex items-center justify-center active:scale-95"
+          className="overflow-hidden absolute top-1/2 md:top-2/5 left-1/4 md:left-1/2 -translate-x-1/2 -translate-y-1/2  w-36 p-2 h-12 bg-gradient-to-br from-black via-zinc-900 to-zinc-950 border text-white rounded-md text-xl font-semibold cursor-pointer z-10 group disabled:opacity-65 flex items-center justify-center active:scale-95"
         >
-          Convert! <ArrowRightIcon className="ml-2 size-6" />
+          Convert!{" "}
+          {isLoading ? (
+            <>
+              <Loader className="animate-spin ml-2" />
+            </>
+          ) : (
+            <>
+              <ArrowRightIcon className="ml-2 size-6" />
+            </>
+          )}
           <span className="absolute w-40 h-32 -top-8 -left-2 bg-white rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-500 duration-1000 origin-left"></span>
           <span className="absolute w-40 h-32 -top-8 -left-2 bg-primary/40 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-700 duration-700 origin-left"></span>
           <span className="absolute w-40 h-32 -top-8 -left-2 bg-primary rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-1000 duration-500 origin-left"></span>
@@ -147,7 +185,40 @@ const CodeConvertor = () => {
             )}
           </span>
         </button>
-        <div className="flex flex-col">
+        <button
+          data-aos="flip-right"
+          type="button"
+          title="AnalyserCode"
+          onClick={AnalyzerhandleSubmit}
+          disabled={AnalyzerisLoading}
+          className="overflow-hidden absolute top-1/2 md:top-3/5 left-3/4 md:left-1/2 -translate-x-1/2 -translate-y-1/2  w-36 p-2 h-12 bg-gradient-to-br from-black via-zinc-900 to-zinc-950 border text-white rounded-md text-xl font-semibold cursor-pointer z-10 group disabled:opacity-65 flex items-center justify-center active:scale-95"
+        >
+          Analyse!{" "}
+          {AnalyzerisLoading ? (
+            <>
+              <Loader className="animate-spin ml-2"/>
+            </>
+          ) : (
+            <>
+              <ArrowRightIcon className="ml-2 size-6" />
+            </>
+          )}
+          <span className="absolute w-40 h-32 -top-8 -left-2 bg-white rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-500 duration-1000 origin-left"></span>
+          <span className="absolute w-40 h-32 -top-8 -left-2 bg-primary/40 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-700 duration-700 origin-left"></span>
+          <span className="absolute w-40 h-32 -top-8 -left-2 bg-primary rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-1000 duration-500 origin-left"></span>
+          <span className="group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-2.5 left-6 z-10 flex items-center justify-center text-black">
+            {AnalyzerisLoading ? (
+              <>
+                <Loader className="animate-spin ml-8" />
+              </>
+            ) : (
+              <>
+                Code <Code2Icon className="ml-2" />
+              </>
+            )}
+          </span>
+        </button>
+        <div data-aos="fade-left" className="flex flex-col">
           <div className="flex">
             <Select onValueChange={setTranslatedLanguage} defaultValue="python">
               <SelectTrigger className="rounded-e-none border-e-0">
@@ -211,12 +282,17 @@ const CodeConvertor = () => {
                 value={object?.code || ""}
                 onChange={(value) => setTranslatedCode(value)}
               />
+              <BorderBeam
+              duration={10}
+              size={500}
+              className="from-transparent via-[#22d3ee] to-transparent"
+            />
             </div>
           </ShineBorder>
         </div>
       </div>
       {object?.explanation && (
-        <div className="mt-6 p-4 md:p-10 mx-auto border-2 border-dashed rounded-2xl border-s-primary shadow-lg max-w-7xl backdrop-blur-sm bg-transparent">
+        <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" className="mt-6 p-4 md:p-10 mx-auto border-2 border-dashed rounded-2xl border-s-primary shadow-lg max-w-7xl backdrop-blur-sm bg-transparent">
           <h1 className="text-2xl md:text-4xl font-semibold text-primary mb-4">
             Explanation:
           </h1>
@@ -227,27 +303,85 @@ const CodeConvertor = () => {
           </div>
         </div>
       )}
-      <div className="mt-6 p-4 md:p-10 mx-auto border-2 border-dashed rounded-2xl border-s-primary shadow-lg max-w-7xl backdrop-blur-sm bg-transparent">
+      {Analyzerdata && (
+        <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" className="mt-6 p-4 md:p-10 mx-auto border-2 border-dashed rounded-2xl border-s-primary shadow-lg max-w-7xl backdrop-blur-sm bg-transparent">
           <h1 className="text-2xl md:text-4xl font-semibold text-primary mb-4">
-            Output:
+            Code Analyser:
           </h1>
-          <Output
-            language={sourceLanguage}
-            sourceCode={sourceCode}
-            setOutput={setResult}
-          />
           <div
-            className={`p-4 md:p-6 justify-left text-left border-2 rounded-2xl ${
-              result.isError ? 'border-red-500 text-red-500' : 'theme.theme === "light" ? "text-black" : "text-white border-green-500'
-            } shadow-lg max-w-7xl backdrop-blur-sm bg-transparent text-left`}
+            className={`${font.className} text-lg leading-relaxed text-gray-400 break-words`}
           >
-            <h1 className="text-xl md:text-2xl font-semibold mb-4">
-              Output:
-            </h1>
-            <div className='text-base leading-relaxed break-words whitespace-pre-wrap'>
-              {result.output || "Run code to see the output."}
-            </div>
+            {Analyzerdata.errors?.length > 0 && (
+              <>
+                <h3 className="text-lg md:text-xl font-semibold text-primary">
+                  Errors:
+                </h3>
+                <ul>
+                  {Analyzerdata.errors.map((err, index) => (
+                    <li key={index}>
+                      <Markdown>{err}</Markdown>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+            {Analyzerdata.corrections?.length > 0 && (
+              <>
+                <h3 className="text-lg md:text-xl font-semibold text-primary mt-5">
+                  Corrections:
+                </h3>
+                <ul>
+                  {Analyzerdata.corrections.map((correction, index) => (
+                    <li key={index}>
+                      <Markdown>{correction}</Markdown>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+            {Analyzerdata.explanations?.length > 0 && (
+              <>
+                <h3 className="text-lg md:text-xl font-semibold text-primary mt-5">
+                  Explanations:
+                </h3>
+                <ul>
+                  {Analyzerdata.explanations.map((explanation, index) => (
+                    <li key={index}>
+                      <Markdown>{explanation}</Markdown>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </div>
+        </div>
+      )}
+      {Analyzererror && (
+        <p className="text-red-500 mt-4 text-center">
+          Error: {Analyzererror.message}
+        </p>
+      )}
+      <div data-aos="fade-up" data-aos-duration="3000" className="mt-6 p-4 md:p-10 mx-auto border-2 border-dashed rounded-2xl border-s-primary shadow-lg max-w-7xl backdrop-blur-sm bg-transparent">
+        <h1 className="text-2xl md:text-4xl font-semibold text-primary mb-4">
+          Output:
+        </h1>
+        <Output
+          language={sourceLanguage}
+          sourceCode={sourceCode}
+          setOutput={setResult}
+        />
+        <div
+          className={`p-4 md:p-6 justify-left text-left border-2 rounded-2xl ${
+            result.isError
+              ? "border-red-500 text-red-500"
+              : 'theme.theme === "light" ? "text-black" : "text-white border-green-500'
+          } shadow-lg max-w-7xl backdrop-blur-sm bg-transparent text-left`}
+        >
+          <h1 className="text-xl md:text-2xl font-semibold mb-4">Output:</h1>
+          <div className="text-base leading-relaxed break-words whitespace-pre-wrap">
+            {result.output || "Run code to see the output."}
+          </div>
+        </div>
       </div>
     </div>
   );

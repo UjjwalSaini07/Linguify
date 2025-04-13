@@ -5,12 +5,10 @@ import { z } from "zod";
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
 
-// POST function to handle incoming requests
 export async function POST(req) {
   try {
     const context = await req.json();
 
-    // Stream the object using the provided context and model
     const result = await streamObject({
       model: google("gemini-1.5-pro-latest"),
       system:
