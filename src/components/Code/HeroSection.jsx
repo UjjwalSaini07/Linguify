@@ -6,6 +6,8 @@ import { Oxygen_Mono } from "next/font/google";
 import Spline from "@splinetool/react-spline";
 import { cn } from "../../lib/utils";
 import Convertor from "./CodeConvertor";
+import AOS from "aos";
+import "aos/dist/aos.css";
 // import { HyperText } from "../magicui/hyper-text";
 
 const spline_model = {
@@ -31,6 +33,14 @@ const HeroSection = () => {
       setIsMobile(window.innerWidth < 1024);
     };
 
+    AOS.init({
+      offset: 100,
+      delay: 25,
+      duration: 2000,
+      easing: "ease",
+      once: false,
+    });
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -38,20 +48,22 @@ const HeroSection = () => {
 
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center pt-20 md:pt-28 z-20 overflow-hidden rounded-lg bg-background">
-      <h1 className="pointer-events-none text-4xl -mt-18 z-20 whitespace-pre-wrap bg-gradient-to-b from-black to-zinc-400/80 bg-clip-text text-center md:text-6xl md:max-w-xl lg:max-w-3xl font-semibold lg:text-7xl leading-none text-transparent dark:from-white dark:to-zinc-600/80 tracking-tight">
-        Revolutionize{" "}
-        {/* <HyperText className="text-7xl font-bold" duration={1000} animateOnHover={true}>Revolutionize</HyperText> */}
-        <span
-          className={cn(font.className, "md:text-7xl text-3xl text-[#08fd5d]")}
-        >
-          {"{"}Code{"}"}
-        </span>{" "}
-        Creation with the
-        <span className={"text-[#08fd5d]"}>{""} Power </span>
-        {""}of
-        <span className={"text-[#08fd5d]"}>{""} AI</span>
-      </h1>
-      <p className="md:text-xl pt-5 font-light px-4 z-20 text-pretty text-center text-muted-foreground max-w-prose">
+      <div data-aos="fade-down" className="pointer-events-none z-20">
+        <h1 className="pointer-events-none text-4xl -mt-18 z-20 whitespace-pre-wrap bg-gradient-to-b from-black to-zinc-400/80 bg-clip-text text-center md:text-6xl md:max-w-xl lg:max-w-3xl font-semibold lg:text-7xl leading-none text-transparent dark:from-white dark:to-zinc-600/80 tracking-tight">
+          Revolutionize{" "}
+          {/* <HyperText className="text-7xl font-bold" duration={1000} animateOnHover={true}>Revolutionize</HyperText> */}
+          <span
+            className={cn(font.className, "md:text-7xl text-3xl text-[#08fd5d]")}
+          >
+            {"{"}Code{"}"}
+          </span>{" "}
+          Creation with the
+          <span className={"text-[#08fd5d]"}>{""} Power </span>
+          {""}of
+          <span className={"text-[#08fd5d]"}>{""} AI</span>
+        </h1>
+      </div>
+      <p data-aos="zoom-in" className="pointer-events-none md:text-xl pt-5 font-light px-4 z-20 text-pretty text-center text-muted-foreground max-w-prose">
         with Linguify, effortlessly paste your code and watch it transform in
         seconds!
       </p>
