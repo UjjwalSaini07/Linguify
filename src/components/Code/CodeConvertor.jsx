@@ -134,13 +134,7 @@ const CodeConvertor = () => {
             <BorderBeam
               duration={10}
               size={500}
-              className="from-transparent via-green-600 to-transparent"
-            />
-            <BorderBeam
-              duration={10}
-              delay={3}
-              size={500}
-              className="from-transparent via-blue-600 to-transparent"
+              className="from-transparent via-[#08fd5d] to-transparent"
             />
           </ShineBorder>
         </div>
@@ -277,13 +271,7 @@ const CodeConvertor = () => {
               <BorderBeam
               duration={10}
               size={500}
-              className="from-transparent via-green-600 to-transparent"
-            />
-            <BorderBeam
-              duration={10}
-              delay={3}
-              size={500}
-              className="from-transparent via-blue-600 to-transparent"
+              className="from-transparent via-[#22d3ee] to-transparent"
             />
             </div>
           </ShineBorder>
