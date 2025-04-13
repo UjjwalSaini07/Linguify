@@ -32,6 +32,8 @@ const HeroSection = () => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1024);
     };
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     AOS.init({
       offset: 100,

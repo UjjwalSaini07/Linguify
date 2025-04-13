@@ -11,7 +11,7 @@ export const metadata = {
   title: "Linguify - Code Without Borders",
   description:
     "Effortlessly transform your code into over 35 programming languages with the power of AI. Streamline development and expand compatibility—all in just a single step!",
-  metadataBase: new URL("http://localhost:3000/"),
+  metadataBase: new URL("https://linguify-code.vercel.app/"),
 };
 
 export default function RootLayout({ children }) {

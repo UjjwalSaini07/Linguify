@@ -52,6 +52,9 @@ const CodeConvertor = () => {
     Analyzersubmit({ sourceCode });
     toast.success("Scroll Down to Check the Code Analysis")
   };
+  const ConvertToasthandle = () => {
+    toast.success("Scroll Down to Check the Code Explanation")
+  };
 
   if (error) {
     toast.error("Failed to generate code");
@@ -156,6 +159,7 @@ const CodeConvertor = () => {
           title="convert"
           onClick={() => {
             submit(prompted);
+            ConvertToasthandle()
           }}
           disabled={isLoading}
           className="overflow-hidden absolute top-1/2 md:top-2/5 left-1/4 md:left-1/2 -translate-x-1/2 -translate-y-1/2  w-36 p-2 h-12 bg-gradient-to-br from-black via-zinc-900 to-zinc-950 border text-white rounded-md text-xl font-semibold cursor-pointer z-10 group disabled:opacity-65 flex items-center justify-center active:scale-95"
