@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CodeEditor from "./CodeEditor";
 import { Button } from "../ui/button";
 import Markdown from "react-markdown";
@@ -20,6 +20,8 @@ import { BorderBeam } from "../magicui/border-beam";
 import { useTheme } from "next-themes";
 import Output from "./CodeOutput";
 import useCodeAnalyzer from "./useCodeAnalyzer";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
@@ -60,13 +62,23 @@ const CodeConvertor = () => {
     toast.success("Copied to clipboard");
   }
 
+  useEffect(() => {
+    AOS.init({
+      offset: 100,
+      delay: 50,
+      duration: 2000,
+      easing: "ease",
+      once: true,
+    });
+  }, []);
+
   return (
     <div
       className="max-w-screen px-2 min-h-screen w-full md:px-20 my-16"
       id="coder"
     >
       <div className="grid gap-20 grid-cols-1 sm:grid-cols-2 relative">
-        <div className="flex flex-col">
+        <div data-aos="fade-right" className="flex flex-col">
           <div className="flex">
             <Select onValueChange={setSourceLanguage} defaultValue="javascript">
               <SelectTrigger className="rounded-e-none border-e-0">
@@ -139,6 +151,7 @@ const CodeConvertor = () => {
           </ShineBorder>
         </div>
         <button
+          data-aos="flip-left"
           type="button"
           title="convert"
           onClick={() => {
@@ -173,6 +186,7 @@ const CodeConvertor = () => {
           </span>
         </button>
         <button
+          data-aos="flip-right"
           type="button"
           title="AnalyserCode"
           onClick={AnalyzerhandleSubmit}
@@ -204,7 +218,7 @@ const CodeConvertor = () => {
             )}
           </span>
         </button>
-        <div className="flex flex-col">
+        <div data-aos="fade-left" className="flex flex-col">
           <div className="flex">
             <Select onValueChange={setTranslatedLanguage} defaultValue="python">
               <SelectTrigger className="rounded-e-none border-e-0">
@@ -278,7 +292,7 @@ const CodeConvertor = () => {
         </div>
       </div>
       {object?.explanation && (
-        <div className="mt-6 p-4 md:p-10 mx-auto border-2 border-dashed rounded-2xl border-s-primary shadow-lg max-w-7xl backdrop-blur-sm bg-transparent">
+        <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" className="mt-6 p-4 md:p-10 mx-auto border-2 border-dashed rounded-2xl border-s-primary shadow-lg max-w-7xl backdrop-blur-sm bg-transparent">
           <h1 className="text-2xl md:text-4xl font-semibold text-primary mb-4">
             Explanation:
           </h1>
@@ -290,7 +304,7 @@ const CodeConvertor = () => {
         </div>
       )}
       {Analyzerdata && (
-        <div className="mt-6 p-4 md:p-10 mx-auto border-2 border-dashed rounded-2xl border-s-primary shadow-lg max-w-7xl backdrop-blur-sm bg-transparent">
+        <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" className="mt-6 p-4 md:p-10 mx-auto border-2 border-dashed rounded-2xl border-s-primary shadow-lg max-w-7xl backdrop-blur-sm bg-transparent">
           <h1 className="text-2xl md:text-4xl font-semibold text-primary mb-4">
             Code Analyser:
           </h1>
@@ -347,7 +361,7 @@ const CodeConvertor = () => {
           Error: {Analyzererror.message}
         </p>
       )}
-      <div className="mt-6 p-4 md:p-10 mx-auto border-2 border-dashed rounded-2xl border-s-primary shadow-lg max-w-7xl backdrop-blur-sm bg-transparent">
+      <div data-aos="fade-up" data-aos-duration="3000" className="mt-6 p-4 md:p-10 mx-auto border-2 border-dashed rounded-2xl border-s-primary shadow-lg max-w-7xl backdrop-blur-sm bg-transparent">
         <h1 className="text-2xl md:text-4xl font-semibold text-primary mb-4">
           Output:
         </h1>
