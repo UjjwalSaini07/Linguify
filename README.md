@@ -8,3 +8,91 @@ Linguify is your all-in-one AI-powered coding assistant, built with latest techn
 [![GitHub stars](https://img.shields.io/github/stars/UjjwalSaini07/Linguify?style=social&label=Star&maxAge=2592100)](https://github.com/UjjwalSaini07/Linguify)
 [![Github Release](https://img.shields.io/github/v/release/UjjwalSaini07/Linguify)](https://github.com/UjjwalSaini07/Linguify)
 
+
+## Key Features 🎯
+- 🌍 Seamless code conversion across 35+ programming languages to explore new tech stacks and streamline workflows.
+- ✅ AI-powered code reviews offering actionable feedback to improve quality, follow best practices, and minimize errors.
+- 🔍 Detailed code analysis providing insights into structure, performance, and optimization opportunities.
+- 🔮 AI-driven output prediction to anticipate code behavior and save time during debugging and testing.
+- ⚡ Built using Next.js and Tailwind CSS for a fast, responsive, and intuitive user experience.
+- 🚀 Designed to boost productivity and simplify complex coding tasks for developers of all levels.
+
+## Demo 🖥️
+You can visit the live site here - https://linguify-code.vercel.app/
+
+## Technologies Used 👨🏻‍💻
+- **Next.js** – A powerful high-performance frontend for building fast and scalable web applications.
+- **Tailwind CSS** – A utility-first CSS framework for efficient and responsive styling.
+- **Node.js** – A JavaScript runtime for server-side development.
+- **Docker** – Containerization for seamless deployment and scalability.
+- **ShadCN** – Used for beautifully designed, responsive components.
+
+## Getting Started ⚙️
+### Prerequisites
+
+- Node.js v22.14.0 or higher
+- npm or pnpm (Package Managers)
+- Code Editor (e.g., VS Code)
+- Git (Version Control System)
+- Docker (For containerized deployments)
+- Browsers (Latest versions of Chrome, Firefox, or Edge for development and testing)
+
+## Installation 🛠️
+- First Read this [License](https://github.com/UjjwalSaini07/Linguify/blob/main/LICENSE) & their terms then proceed.
+- Star ⭐ the [Repository](https://github.com/UjjwalSaini07/Linguify)
+- Fork the repository **(Optional)**
+- Project Setup:
+1. Clone the repository:
+```bash
+    git clone https://github.com/UjjwalSaini07/Linguify.git
+```
+2. Navigate to the project Root directory:
+```bash
+    cd Linguify
+```
+3. Install Frontend dependencies:
+```bash
+    pnpm install
+```
+
+### Project Setup Using Docker Containerization:
+1. Start the Docker Engine Locally
+2. Navigate to the project Root directory:
+```bash
+    cd Linguify
+```
+3. Run DockerFile:
+```bash
+    docker-compose up --build
+```
+
+## Start the web app 🖥️
+- Start the Frontend Development server
+```bash
+    pnpm run dev
+```
+
+- Open your browser and navigate to http://localhost:3000 to view the localhost website
+
+## Author ✍️
+- [@Ujjwal Saini](https://github.com/UjjwalSaini07)
+
+## Screenshots 📷
+
+## Contact 📞
+Feel free to reach out if you have any questions or suggestions!
+
+- Raise an issue for the same [Issue](https://github.com/UjjwalSaini07/Linguify/issues)
+- Github: [@Ujjwal Saini](https://github.com/UjjwalSaini07)
+
+## License 📄
+License Credential [Check](https://github.com/UjjwalSaini07/Linguify/blob/main/LICENSE). </br>You can use this project the way you want Make sure to fork before. Feel free to credit me if you want to!
+
+## Feedback and Contributions 💌
+Feedback and contributions are always welcome! Feel free to open an [Issue](https://github.com/UjjwalSaini07/Linguify/issues).
+
+<div align="center">
+    <a href="#top">
+        <img src="https://img.shields.io/badge/Back%20to%20Top-000000?style=for-the-badge&logo=github&logoColor=white" alt="Back to Top">
+    </a>
+</div>
