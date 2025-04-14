@@ -78,6 +78,7 @@ You can visit the live site here - https://linguify-code.vercel.app/
 - [@Ujjwal Saini](https://github.com/UjjwalSaini07)
 
 ## Screenshots 📷
+![Linguify_DemoImage](https://github.com/user-attachments/assets/aaaefe81-21f9-472a-b578-510983ca81c0)
 
 ## Contact 📞
 Feel free to reach out if you have any questions or suggestions!
