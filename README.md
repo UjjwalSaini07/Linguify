@@ -8,7 +8,6 @@ Linguify is your all-in-one AI-powered coding assistant, built with latest techn
 [![GitHub stars](https://img.shields.io/github/stars/UjjwalSaini07/Linguify?style=social&label=Star&maxAge=2592100)](https://github.com/UjjwalSaini07/Linguify)
 [![Github Release](https://img.shields.io/github/v/release/UjjwalSaini07/Linguify)](https://github.com/UjjwalSaini07/Linguify)
 
-
 ## Key Features 🎯
 - 🌍 Seamless code conversion across 35+ programming languages to explore new tech stacks and streamline workflows.
 - ✅ AI-powered code reviews offering actionable feedback to improve quality, follow best practices, and minimize errors.
